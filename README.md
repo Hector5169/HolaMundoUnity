@@ -1,4 +1,5 @@
 Objetivo:
+
 Mi objetivo al desarrollar este script en Unity fue aprender los fundamentos del desarrollo de videojuegos utilizando el motor gráfico Unity y el lenguaje de programación C#.
 Quería familiarizarme con conceptos básicos como programación orientada a objetos, manejo de variables, condicionales, bucles, estructuras de datos y métodos, aplicándolos de manera práctica para simular funcionalidades comunes en videojuegos.
 

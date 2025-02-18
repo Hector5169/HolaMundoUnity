@@ -1,3 +1,4 @@
+using Unity.Netcode;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -38,10 +39,12 @@ public class LearningCurve : MonoBehaviour
         ComputeAge();
         PrintCharacterAction();
         RollDice();
+        
+        CollectPoints(5); // Ejemplo de uso inicial
 
         int MyInteger = 3;
         float MyFloat = MyInteger;
-        int ExplicitConversion = (int)3.14; // Esto le dice al compilador que somos conscientes de que se pueden perder datos (o precisi�n).
+        int ExplicitConversion = (int)3.14; // Esto le dice al compilador que somos conscientes de que se pueden perder datos (o precisión).
                                             //var CurrentAge = 32; se utiliza var solo cuando no sabemos el tipo de dato que nos esta llegando, es recomendable utilizarla cuando estamos probando codigo y no sabemos el tipo de dato que se esta almacenando.
         int CharacterHealth = 100; //Local scope 1 (Variable local) se usa solo en esta parte espesifica del codigo.
         string FullName = "Harrison " + "Ferrone";
@@ -79,7 +82,7 @@ public class LearningCurve : MonoBehaviour
 
         else
         {
-            Debug.Log("Los pu�os no van a funcionar contra la armadura...");
+            Debug.Log("Los puños no van a funcionar contra la armadura...");
         }
 
         if (weaponEquipped && weaponType == "Espadalarga")
@@ -105,7 +108,7 @@ public class LearningCurve : MonoBehaviour
         Debug.Log(FullName);
 
         Debug.Log("Elija un Personaje");
-        GenerateCharacter("Spike", CharacterLevel); // Argumentos (o tambien valores de argumentos para el parametro GenerateCharacter()) del parametro public void GenerateCharacter(string Name, int Level) lina 77
+        GenerateCharacter("Spike", CharacterLevel); // Argumentos (o tambien valores de argumentos para el parametro GenerateCharacter() del metodo linea 77
         Debug.Log("Una buena eleccion");
 
         Debug.Log(NextSkillLevel);
@@ -113,38 +116,6 @@ public class LearningCurve : MonoBehaviour
 
         NewCharacter("Frieren", NewCreation);
         GenerateCharacter("Nuevo", NewCreation);
-
-        /* SE MOVIO LA LISTA QuestPartyMembers a una funcion llamada FindPartyMember();
-        List<string> QuestPartyMembers = new List<string>()
-        {
-            "Grim el Barbaro,",
-            "Merlin el Hechicero,",
-            "Sterling el Caballero,",
-        };
-        int listLength = QuestPartyMembers.Count;
-
-        for (int i = 0; i < listLength; i++)
-        {
-            Debug.LogFormat("Indice: {0} - {1}", i, QuestPartyMembers[i]);
-        }
-
-        QuestPartyMembers.Add("Craven el Nigromante,");
-        QuestPartyMembers.Insert(1, "Tanis el Labron,");
-        QuestPartyMembers.RemoveAt(0);// o tambien usar QuestPartyMembers.Remove("Grim el Barbaro");
-        foreach (string member in QuestPartyMembers)
-        {
-            Debug.Log(member);
-        }
-
-        StringBuilder membersString = new StringBuilder();
-        foreach (string member in QuestPartyMembers)
-        {
-            membersString.Append(member + " ");
-        }
-        Debug.LogFormat("Miembros en el grupo: {0}", membersString.ToString());
-
-        Debug.LogFormat("Miembros en el grupo: {0}", QuestPartyMembers.Count);
-        */
 
         Dictionary<string, int> ItemInventory = new Dictionary<string, int>()
         {
@@ -166,11 +137,19 @@ public class LearningCurve : MonoBehaviour
             {
                 Debug.Log("No tienes oro suficiente en estos momentos");
             }
-
-
         }
 
     }
+
+    /// <summary>
+    /// Nueva función para recolectar puntos o monedas
+    /// </summary>
+    public void CollectPoints(int points)
+    {
+        CurrentGold += points;
+        Debug.Log($"Has recolectado {points} puntos. Total de oro actual: {CurrentGold}");
+    }
+
     /// <summary>
     /// Creacion del personaje
     /// </summary>
@@ -273,15 +252,15 @@ public class LearningCurve : MonoBehaviour
             case 7:
 
             case 15:
-                Debug.Log("Da�o mediocre, no esta mal.");
+                Debug.Log("Daño mediocre, no esta mal.");
                 break;
 
             case 20:
-                Debug.Log("Da�o cr�tico, la criatura cae!");
+                Debug.Log("Daño crítico, la criatura cae!");
                 break;
 
             default:
-                Debug.Log("Fallastes por completo y ca�stes de cara");
+                Debug.Log("Fallastes por completo y caístes de cara");
                 break;
         }
     }
